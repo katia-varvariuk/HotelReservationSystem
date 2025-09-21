@@ -16,10 +16,4 @@
     <ProjectReference Include="..\HotelReservation.Domain\HotelReservation.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DTOs\" />
-    <Folder Include="Profiles\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
