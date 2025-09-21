@@ -8,68 +8,34 @@ namespace HotelReservation.Dal.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly string _connectionString;
-        private readonly ILogger<UnitOfWork> _logger;
+        private readonly IConfiguration _configuration;
+        private readonly IClientRepository _clients;
+        private readonly IReservationRepository _reservations;
+        private readonly IRoomRepository _rooms;
+        private readonly IPaymentRepository _payments;
+
         private NpgsqlConnection? _connection;
         private NpgsqlTransaction? _transaction;
         private bool _disposed;
 
-        private IClientRepository? _clients;
-        private IReservationRepository? _reservations;
-        private IRoomRepository? _rooms;
-        private IPaymentRepository? _payments;
-
-        public UnitOfWork(IConfiguration configuration, ILogger<UnitOfWork> logger)
+        public UnitOfWork(
+            IConfiguration configuration,
+            IClientRepository clientRepository,
+            IReservationRepository reservationRepository,
+            IRoomRepository roomRepository,
+            IPaymentRepository paymentRepository)
         {
-            _connectionString = configuration.GetConnectionString("HotelReservationsDB") ??
-                throw new ArgumentNullException(nameof(configuration), "Connection string not found");
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _configuration = configuration;
+            _clients = clientRepository;
+            _reservations = reservationRepository;
+            _rooms = roomRepository;
+            _payments = paymentRepository;
         }
 
-        public IClientRepository Clients
-        {
-            get
-            {
-                EnsureConnection();
-                return _clients ??= new ClientRepository(_connection!, _transaction, _logger.CreateLogger<ClientRepository>());
-            }
-        }
-
-        public IReservationRepository Reservations
-        {
-            get
-            {
-                EnsureConnection();
-                return _reservations ??= new ReservationRepository(_connection!, _transaction, _logger.CreateLogger<ReservationRepository>());
-            }
-        }
-
-        public IRoomRepository Rooms
-        {
-            get
-            {
-                EnsureConnection();
-                return _rooms ??= new RoomRepository(_connection!, _transaction, _logger.CreateLogger<RoomRepository>());
-            }
-        }
-
-        public IPaymentRepository Payments
-        {
-            get
-            {
-                EnsureConnection();
-                return _payments ??= new PaymentRepository(_connection!, _transaction, _logger.CreateLogger<PaymentRepository>());
-            }
-        }
-
-        private void EnsureConnection()
-        {
-            if (_connection == null)
-            {
-                _connection = new NpgsqlConnection(_connectionString);
-                _connection.Open();
-            }
-        }
+        public IClientRepository Clients => _clients;
+        public IReservationRepository Reservations => _reservations;
+        public IRoomRepository Rooms => _rooms;
+        public IPaymentRepository Payments => _payments;
 
         public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
         {
@@ -78,14 +44,12 @@ namespace HotelReservation.Dal.Repositories
                 throw new InvalidOperationException("Transaction already started");
             }
 
-            if (_connection == null)
-            {
-                _connection = new NpgsqlConnection(_connectionString);
-                await _connection.OpenAsync(cancellationToken);
-            }
+            var connectionString = _configuration.GetConnectionString("HotelReservationsDB") ??
+                throw new ArgumentNullException("Connection string not found");
 
+            _connection = new NpgsqlConnection(connectionString);
+            await _connection.OpenAsync(cancellationToken);
             _transaction = await _connection.BeginTransactionAsync(cancellationToken);
-            _logger.LogInformation("Transaction started");
         }
 
         public async Task CommitAsync(CancellationToken cancellationToken = default)
@@ -98,17 +62,23 @@ namespace HotelReservation.Dal.Repositories
             try
             {
                 await _transaction.CommitAsync(cancellationToken);
-                _logger.LogInformation("Transaction committed successfully");
             }
-            catch (Exception ex)
+            catch
             {
-                _logger.LogError(ex, "Error occurred while committing transaction");
                 await RollbackAsync(cancellationToken);
                 throw;
             }
             finally
             {
-                await CleanupTransactionAsync();
+                await _transaction.DisposeAsync();
+                _transaction = null;
+
+                if (_connection != null)
+                {
+                    await _connection.CloseAsync();
+                    await _connection.DisposeAsync();
+                    _connection = null;
+                }
             }
         }
 
@@ -122,40 +92,24 @@ namespace HotelReservation.Dal.Repositories
             try
             {
                 await _transaction.RollbackAsync(cancellationToken);
-                _logger.LogInformation("Transaction rolled back");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occurred while rolling back transaction");
-                throw;
             }
             finally
             {
-                await CleanupTransactionAsync();
-            }
-        }
-
-        private async Task CleanupTransactionAsync()
-        {
-            if (_transaction != null)
-            {
                 await _transaction.DisposeAsync();
                 _transaction = null;
-            }
 
-            // Залишаємо connection відкритим для подальшого використання
-            // Він буде закритий при Dispose
+                if (_connection != null)
+                {
+                    await _connection.CloseAsync();
+                    await _connection.DisposeAsync();
+                    _connection = null;
+                }
+            }
         }
 
-        public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+        public Task SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            // Якщо є активна транзакція - комітимо її
-            if (_transaction != null)
-            {
-                await CommitAsync(cancellationToken);
-            }
-            // Якщо транзакції немає, можливо варто кинути exception
-            // або автоматично створювати транзакцію
+            return Task.CompletedTask;
         }
 
         public void Dispose()
@@ -168,20 +122,9 @@ namespace HotelReservation.Dal.Repositories
         {
             if (!_disposed && disposing)
             {
-                try
-                {
-                    _transaction?.Dispose();
-                    _connection?.Close();
-                    _connection?.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Error occurred while disposing UnitOfWork");
-                }
-                finally
-                {
-                    _disposed = true;
-                }
+                _transaction?.Dispose();
+                _connection?.Dispose();
+                _disposed = true;
             }
         }
     }
