@@ -8,7 +8,6 @@ namespace HotelReservation.Bll.Profiles
     {
         public MappingProfile()
         {
-            // Client mappings
             CreateMap<Client, ClientDto>();
             CreateMap<ClientDto, Client>();
             CreateMap<CreateClientDto, Client>()
@@ -19,16 +18,14 @@ namespace HotelReservation.Bll.Profiles
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.Reservations, opt => opt.Ignore());
 
-            // Room mappings
             CreateMap<Room, RoomDto>();
             CreateMap<RoomDto, Room>();
             CreateMap<CreateRoomDto, Room>()
                 .ForMember(dest => dest.RoomId, opt => opt.Ignore())
                 .ForMember(dest => dest.Reservations, opt => opt.Ignore());
             CreateMap<Room, AvailableRoomDto>()
-                .ForMember(dest => dest.IsAvailable, opt => opt.MapFrom(src => true)); // будемо встановлювати динамічно
+                .ForMember(dest => dest.IsAvailable, opt => opt.MapFrom(src => true)); 
 
-            // Reservation mappings
             CreateMap<Reservation, ReservationDto>()
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));
             CreateMap<ReservationDto, Reservation>();
@@ -39,7 +36,6 @@ namespace HotelReservation.Bll.Profiles
                 .ForMember(dest => dest.Room, opt => opt.Ignore())
                 .ForMember(dest => dest.Payments, opt => opt.Ignore());
 
-            // Payment mappings
             CreateMap<Payment, PaymentDto>();
             CreateMap<PaymentDto, Payment>();
             CreateMap<CreatePaymentDto, Payment>()

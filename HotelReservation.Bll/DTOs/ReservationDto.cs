@@ -22,7 +22,6 @@ namespace HotelReservation.Bll.DTOs
 
         public ReservationStatus Status { get; set; }
 
-        // Navigation properties
         public ClientDto? Client { get; set; }
         public RoomDto? Room { get; set; }
         public List<PaymentDto> Payments { get; set; } = new();
