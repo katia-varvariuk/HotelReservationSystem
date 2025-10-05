@@ -3,15 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservation.Api", "HotelReservationSystem\HotelReservation.Api.csproj", "{78ADFCDE-2613-41CD-B148-F7DB8AFB89A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReservation.Api", "HotelReservationSystem\HotelReservation.Api.csproj", "{78ADFCDE-2613-41CD-B148-F7DB8AFB89A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservation.Bll", "HotelReservation.Bll\HotelReservation.Bll.csproj", "{1BC79F71-A8D4-434C-91CD-B9E053E71C46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReservation.Bll", "HotelReservation.Bll\HotelReservation.Bll.csproj", "{1BC79F71-A8D4-434C-91CD-B9E053E71C46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservation.Dal", "HotelReservation.Dal\HotelReservation.Dal.csproj", "{836BD749-2ABC-4D2C-89DA-7F74EEB3DE85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReservation.Dal", "HotelReservation.Dal\HotelReservation.Dal.csproj", "{836BD749-2ABC-4D2C-89DA-7F74EEB3DE85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservation.Domain", "HotelReservation.Domain\HotelReservation.Domain.csproj", "{41F0307E-B89D-4291-9314-7FAAD686FE06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReservation.Domain", "HotelReservation.Domain\HotelReservation.Domain.csproj", "{41F0307E-B89D-4291-9314-7FAAD686FE06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservation.Tests", "HotelReservation.Tests\HotelReservation.Tests.csproj", "{7ABC1702-2208-40BF-B162-B7FC762E3A87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReservation.Tests", "HotelReservation.Tests\HotelReservation.Tests.csproj", "{7ABC1702-2208-40BF-B162-B7FC762E3A87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelCatalog.Api", "HotelCatalog.Api\HotelCatalog.Api.csproj", "{1D4429FA-01FC-4E6E-BC9D-C4782B186706}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelCatalog.Domain", "HotelCatalog.Domain\HotelCatalog.Domain.csproj", "{F6980844-226F-49F4-889F-0A49348DAB98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelCatalog.Dal", "HotelCatalog.Dal\HotelCatalog.Dal.csproj", "{D01AEE89-083F-4ED8-9DF2-8675E9663217}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelCatalog.Bll", "HotelCatalog.Bll\HotelCatalog.Bll.csproj", "{9E577999-AE6A-4031-8014-CFA413881335}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +47,22 @@ Global
 		{7ABC1702-2208-40BF-B162-B7FC762E3A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ABC1702-2208-40BF-B162-B7FC762E3A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ABC1702-2208-40BF-B162-B7FC762E3A87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D4429FA-01FC-4E6E-BC9D-C4782B186706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D4429FA-01FC-4E6E-BC9D-C4782B186706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D4429FA-01FC-4E6E-BC9D-C4782B186706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D4429FA-01FC-4E6E-BC9D-C4782B186706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6980844-226F-49F4-889F-0A49348DAB98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6980844-226F-49F4-889F-0A49348DAB98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6980844-226F-49F4-889F-0A49348DAB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6980844-226F-49F4-889F-0A49348DAB98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D01AEE89-083F-4ED8-9DF2-8675E9663217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D01AEE89-083F-4ED8-9DF2-8675E9663217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D01AEE89-083F-4ED8-9DF2-8675E9663217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D01AEE89-083F-4ED8-9DF2-8675E9663217}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E577999-AE6A-4031-8014-CFA413881335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E577999-AE6A-4031-8014-CFA413881335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E577999-AE6A-4031-8014-CFA413881335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E577999-AE6A-4031-8014-CFA413881335}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
