@@ -2,15 +2,16 @@
 using HotelCatalog.Dal.Interfaces;
 using HotelCatalog.Dal.Data;
 using System.Linq.Expressions;
+using Ardalis.Specification.EntityFrameworkCore;
 
 namespace HotelCatalog.Dal.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : RepositoryBase<T>, IRepository<T> where T : class
     {
         protected readonly HotelCatalogDbContext _context;
         protected readonly DbSet<T> _dbSet;
 
-        public Repository(HotelCatalogDbContext context)
+        public Repository(HotelCatalogDbContext context) : base(context)
         {
             _context = context;
             _dbSet = context.Set<T>();

@@ -1,8 +1,9 @@
-﻿using System.Linq.Expressions;
+﻿using Ardalis.Specification;
+using System.Linq.Expressions;
 
 namespace HotelCatalog.Dal.Interfaces
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> : IRepositoryBase<T> where T : class
     {
         Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default);
         Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default);
