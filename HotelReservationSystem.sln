@@ -13,13 +13,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReservation.Domain", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReservation.Tests", "HotelReservation.Tests\HotelReservation.Tests.csproj", "{7ABC1702-2208-40BF-B162-B7FC762E3A87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelCatalog.Api", "HotelCatalog.Api\HotelCatalog.Api.csproj", "{1D4429FA-01FC-4E6E-BC9D-C4782B186706}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelCatalog.Api", "HotelCatalog.Api\HotelCatalog.Api.csproj", "{1D4429FA-01FC-4E6E-BC9D-C4782B186706}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelCatalog.Domain", "HotelCatalog.Domain\HotelCatalog.Domain.csproj", "{F6980844-226F-49F4-889F-0A49348DAB98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelCatalog.Domain", "HotelCatalog.Domain\HotelCatalog.Domain.csproj", "{F6980844-226F-49F4-889F-0A49348DAB98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelCatalog.Dal", "HotelCatalog.Dal\HotelCatalog.Dal.csproj", "{D01AEE89-083F-4ED8-9DF2-8675E9663217}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelCatalog.Dal", "HotelCatalog.Dal\HotelCatalog.Dal.csproj", "{D01AEE89-083F-4ED8-9DF2-8675E9663217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelCatalog.Bll", "HotelCatalog.Bll\HotelCatalog.Bll.csproj", "{9E577999-AE6A-4031-8014-CFA413881335}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelCatalog.Bll", "HotelCatalog.Bll\HotelCatalog.Bll.csproj", "{9E577999-AE6A-4031-8014-CFA413881335}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReviews.Domain", "HotelReviews.Domain\HotelReviews.Domain.csproj", "{C4281F9C-7D5A-466E-8E0C-BF867E2D1CFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReviews.Application", "HotelReviews.Application\HotelReviews.Application.csproj", "{79CF7169-2400-45BF-899A-845C967702BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReviews.Infrastructure", "HotelReviews.Infrastructure\HotelReviews.Infrastructure.csproj", "{9FAD096A-1FEE-47BF-A414-BD56C85A9FB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReviews.WebApi", "HotelReviews.WebApi\HotelReviews.WebApi.csproj", "{50E6BCB6-41FD-4B5E-B6F1-16123D3B0724}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +71,22 @@ Global
 		{9E577999-AE6A-4031-8014-CFA413881335}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E577999-AE6A-4031-8014-CFA413881335}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E577999-AE6A-4031-8014-CFA413881335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4281F9C-7D5A-466E-8E0C-BF867E2D1CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4281F9C-7D5A-466E-8E0C-BF867E2D1CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4281F9C-7D5A-466E-8E0C-BF867E2D1CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4281F9C-7D5A-466E-8E0C-BF867E2D1CFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79CF7169-2400-45BF-899A-845C967702BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79CF7169-2400-45BF-899A-845C967702BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79CF7169-2400-45BF-899A-845C967702BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79CF7169-2400-45BF-899A-845C967702BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FAD096A-1FEE-47BF-A414-BD56C85A9FB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FAD096A-1FEE-47BF-A414-BD56C85A9FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FAD096A-1FEE-47BF-A414-BD56C85A9FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FAD096A-1FEE-47BF-A414-BD56C85A9FB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50E6BCB6-41FD-4B5E-B6F1-16123D3B0724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50E6BCB6-41FD-4B5E-B6F1-16123D3B0724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50E6BCB6-41FD-4B5E-B6F1-16123D3B0724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50E6BCB6-41FD-4B5E-B6F1-16123D3B0724}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
