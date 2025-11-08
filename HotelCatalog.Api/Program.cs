@@ -12,14 +12,12 @@ using HotelCatalog.Api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseSerilog((context, configuration) =>
-    configuration.ReadFrom.Configuration(context.Configuration));
+builder.AddServiceDefaults();
 
 builder.Services.AddDbContext<HotelCatalogDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("HotelCatalogDB")));
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
-
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssemblyContaining<MappingProfile>();
@@ -28,7 +26,6 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 builder.Services.AddScoped<IRoomCategoryRepository, RoomCategoryRepository>();
 builder.Services.AddScoped<IDiscountCategoryRepository, DiscountCategoryRepository>();
-
 builder.Services.AddScoped<IServiceService, ServiceService>();
 builder.Services.AddScoped<IRoomCategoryService, RoomCategoryService>();
 builder.Services.AddScoped<IDiscountCategoryService, DiscountCategoryService>();
@@ -39,10 +36,7 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
     });
 
-builder.Services.AddControllers();
-
 builder.Services.AddEndpointsApiExplorer();
-
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
@@ -65,6 +59,8 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+app.MapDefaultEndpoints();
+
 using (var scope = app.Services.CreateScope())
 {
     try
@@ -79,20 +75,18 @@ using (var scope = app.Services.CreateScope())
         throw;
     }
 }
+
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Hotel Catalog API V1");
-    c.RoutePrefix = string.Empty; 
+    c.RoutePrefix = string.Empty;
 });
 
 app.UseExceptionHandlingMiddleware();
-
 app.UseHttpsRedirection();
 app.UseCors();
-
 app.UseSerilogRequestLogging();
-
 app.UseAuthorization();
 app.MapControllers();
 

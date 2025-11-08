@@ -1,0 +1,6 @@
+@HotelPlatform.Aggregator_HostAddress = http://localhost:5021
+
+GET {{HotelPlatform.Aggregator_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

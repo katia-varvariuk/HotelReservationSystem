@@ -2,8 +2,10 @@ using HotelReservation.Bll.Profiles;
 using HotelReservation.Bll.Services;
 using HotelReservation.Dal.Interfaces;
 using HotelReservation.Dal.Repositories;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.AddServiceDefaults();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -23,6 +25,7 @@ builder.Services.AddScoped<IRoomService, RoomService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 
 var app = builder.Build();
+app.UseServiceDefaults();
 
 if (app.Environment.IsDevelopment())
 {

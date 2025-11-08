@@ -23,6 +23,25 @@ public class ReviewsController : ControllerBase
         _mediator = mediator;
         _logger = logger;
     }
+    [HttpGet]
+    [ProducesResponseType(typeof(PagedResult<ReviewDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<PagedResult<ReviewDto>>> GetAll(
+    [FromQuery] int page = 1,
+    [FromQuery] int pageSize = 10,
+    [FromQuery] int? minRating = null,
+    [FromQuery] bool? isVerified = null,
+    [FromQuery] bool? isApproved = null,
+    CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation("Запит всіх відгуків, сторінка {Page}", page);
+
+        var query = new GetReviewsByRoomQuery(0, page, pageSize, minRating, isVerified, isApproved);
+        var result = await _mediator.Send(query, cancellationToken);
+
+        return Ok(result);
+    }
+
+
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(ReviewDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

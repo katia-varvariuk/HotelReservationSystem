@@ -11,11 +11,25 @@ namespace HotelReviews.Infrastructure;
 public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(
-        this IServiceCollection services,
-        IConfiguration configuration)
+    this IServiceCollection services,
+    IConfiguration configuration)
     {
-        services.Configure<MongoDbSettings>(
-            configuration.GetSection(MongoDbSettings.SectionName));
+        var mongoConnectionString = configuration.GetConnectionString("mongodb");
+
+        if (string.IsNullOrEmpty(mongoConnectionString))
+        {
+            mongoConnectionString = configuration["MongoDbSettings:ConnectionString"]
+                                  ?? "mongodb://localhost:27017";
+        }
+
+        var mongoDatabaseName = configuration["MongoDbSettings:DatabaseName"]
+                              ?? "hotel-reviews-dev";
+
+        services.Configure<MongoDbSettings>(options =>
+        {
+            options.ConnectionString = mongoConnectionString;
+            options.DatabaseName = mongoDatabaseName;
+        });
         services.AddSingleton<MongoDbContext>();
         services.AddScoped<IReviewRepository, ReviewRepository>();
         services.AddScoped<IRequestRepository, RequestRepository>();

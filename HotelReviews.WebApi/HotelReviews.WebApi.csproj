@@ -8,6 +8,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\HotelReviews.Application\HotelReviews.Application.csproj" />
 		<ProjectReference Include="..\HotelReviews.Infrastructure\HotelReviews.Infrastructure.csproj" />
+		<ProjectReference Include="..\HotelPlatform.ServiceDefaults\HotelPlatform.ServiceDefaults.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
