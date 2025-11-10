@@ -21,21 +21,29 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelCatalog.Dal", "HotelCa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelCatalog.Bll", "HotelCatalog.Bll\HotelCatalog.Bll.csproj", "{9E577999-AE6A-4031-8014-CFA413881335}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReviews.Domain", "HotelReviews.Domain\HotelReviews.Domain.csproj", "{C4281F9C-7D5A-466E-8E0C-BF867E2D1CFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReviews.Domain", "HotelReviews.Domain\HotelReviews.Domain.csproj", "{C4281F9C-7D5A-466E-8E0C-BF867E2D1CFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReviews.Application", "HotelReviews.Application\HotelReviews.Application.csproj", "{79CF7169-2400-45BF-899A-845C967702BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReviews.Application", "HotelReviews.Application\HotelReviews.Application.csproj", "{79CF7169-2400-45BF-899A-845C967702BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReviews.Infrastructure", "HotelReviews.Infrastructure\HotelReviews.Infrastructure.csproj", "{9FAD096A-1FEE-47BF-A414-BD56C85A9FB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReviews.Infrastructure", "HotelReviews.Infrastructure\HotelReviews.Infrastructure.csproj", "{9FAD096A-1FEE-47BF-A414-BD56C85A9FB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReviews.WebApi", "HotelReviews.WebApi\HotelReviews.WebApi.csproj", "{50E6BCB6-41FD-4B5E-B6F1-16123D3B0724}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReviews.WebApi", "HotelReviews.WebApi\HotelReviews.WebApi.csproj", "{50E6BCB6-41FD-4B5E-B6F1-16123D3B0724}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelPlatform.ApiGateway", "HotelPlatform.ApiGateway\HotelPlatform.ApiGateway.csproj", "{8A5E55A9-CD27-4B5E-8E8D-7D58BE53E906}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelPlatform.ApiGateway", "HotelPlatform.ApiGateway\HotelPlatform.ApiGateway.csproj", "{8A5E55A9-CD27-4B5E-8E8D-7D58BE53E906}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelPlatform.Aggregator", "HotelPlatform.Aggregator\HotelPlatform.Aggregator.csproj", "{15E70DEB-914A-4A4F-917F-AAC431694E05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelPlatform.Aggregator", "HotelPlatform.Aggregator\HotelPlatform.Aggregator.csproj", "{15E70DEB-914A-4A4F-917F-AAC431694E05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelPlatform.AppHost", "HotelPlatform.AppHost\HotelPlatform.AppHost.csproj", "{AC6628BE-7417-42EE-B178-4E8D1276FF2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelPlatform.AppHost", "HotelPlatform.AppHost\HotelPlatform.AppHost.csproj", "{AC6628BE-7417-42EE-B178-4E8D1276FF2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelPlatform.ServiceDefaults", "HotelPlatform.ServiceDefaults\HotelPlatform.ServiceDefaults.csproj", "{5638039A-6FC4-4EA5-809B-7C1EA5B26202}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelPlatform.ServiceDefaults", "HotelPlatform.ServiceDefaults\HotelPlatform.ServiceDefaults.csproj", "{5638039A-6FC4-4EA5-809B-7C1EA5B26202}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{9DC03B3C-D38F-4514-A890-4220AD732E47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{D30E3996-6CC2-4091-A745-56CDD05E3F6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reservation", "Reservation", "{2B01F1B1-3F7B-458A-9649-210C0D2A16CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reviews", "Reviews", "{B554D420-8E9E-488C-9F41-3F9939C30BCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -114,6 +122,24 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{78ADFCDE-2613-41CD-B148-F7DB8AFB89A8} = {2B01F1B1-3F7B-458A-9649-210C0D2A16CB}
+		{1BC79F71-A8D4-434C-91CD-B9E053E71C46} = {2B01F1B1-3F7B-458A-9649-210C0D2A16CB}
+		{836BD749-2ABC-4D2C-89DA-7F74EEB3DE85} = {2B01F1B1-3F7B-458A-9649-210C0D2A16CB}
+		{41F0307E-B89D-4291-9314-7FAAD686FE06} = {2B01F1B1-3F7B-458A-9649-210C0D2A16CB}
+		{7ABC1702-2208-40BF-B162-B7FC762E3A87} = {2B01F1B1-3F7B-458A-9649-210C0D2A16CB}
+		{1D4429FA-01FC-4E6E-BC9D-C4782B186706} = {D30E3996-6CC2-4091-A745-56CDD05E3F6F}
+		{F6980844-226F-49F4-889F-0A49348DAB98} = {D30E3996-6CC2-4091-A745-56CDD05E3F6F}
+		{D01AEE89-083F-4ED8-9DF2-8675E9663217} = {D30E3996-6CC2-4091-A745-56CDD05E3F6F}
+		{9E577999-AE6A-4031-8014-CFA413881335} = {D30E3996-6CC2-4091-A745-56CDD05E3F6F}
+		{C4281F9C-7D5A-466E-8E0C-BF867E2D1CFB} = {B554D420-8E9E-488C-9F41-3F9939C30BCF}
+		{79CF7169-2400-45BF-899A-845C967702BF} = {B554D420-8E9E-488C-9F41-3F9939C30BCF}
+		{9FAD096A-1FEE-47BF-A414-BD56C85A9FB4} = {B554D420-8E9E-488C-9F41-3F9939C30BCF}
+		{50E6BCB6-41FD-4B5E-B6F1-16123D3B0724} = {B554D420-8E9E-488C-9F41-3F9939C30BCF}
+		{D30E3996-6CC2-4091-A745-56CDD05E3F6F} = {9DC03B3C-D38F-4514-A890-4220AD732E47}
+		{2B01F1B1-3F7B-458A-9649-210C0D2A16CB} = {9DC03B3C-D38F-4514-A890-4220AD732E47}
+		{B554D420-8E9E-488C-9F41-3F9939C30BCF} = {9DC03B3C-D38F-4514-A890-4220AD732E47}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25F2F334-FCC5-4C46-BDD3-8D3AD299B3BF}

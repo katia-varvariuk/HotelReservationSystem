@@ -8,10 +8,30 @@ using HotelReviews.WebApi.Middleware;
 using MediatR;
 using Serilog;
 using System.Reflection;
+using HotelReviews.WebApi.Services;
+using HotelReviews.Application.Common.Interfaces;
+using HotelReviews.Infrastructure.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+
+builder.Services.AddMemoryCache(options =>
+{
+    options.SizeLimit = 1024; 
+    options.CompactionPercentage = 0.25; 
+});
+
+builder.AddRedisClient("redis");
+
+builder.Services.AddSingleton<ICacheService, CacheService>();
+builder.Services.AddSingleton<IDistributedCacheService, DistributedCacheService>();
+builder.Services.AddSingleton<ITwoLevelCacheService, TwoLevelCacheService>();
+
+builder.Services.Configure<MongoDbSettings>(
+    builder.Configuration.GetSection("MongoDbSettings"));
+
+builder.Services.AddSingleton<ICacheService, CacheService>();
 
 builder.Services.AddControllers();
 
