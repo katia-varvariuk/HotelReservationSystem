@@ -1,4 +1,5 @@
 ﻿using HotelPlatform.Aggregator.DTOs;
+using System.Threading.Tasks;
 
 namespace HotelPlatform.Aggregator.Clients;
 

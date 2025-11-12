@@ -28,6 +28,8 @@ builder.Services.AddSingleton<ICacheService, CacheService>();
 builder.Services.AddSingleton<IDistributedCacheService, DistributedCacheService>();
 builder.Services.AddSingleton<ITwoLevelCacheService, TwoLevelCacheService>();
 
+builder.Services.AddGrpc();
+
 builder.Services.Configure<MongoDbSettings>(
     builder.Configuration.GetSection("MongoDbSettings"));
 
@@ -122,6 +124,7 @@ app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 app.UseSerilogRequestLogging();
 app.UseAuthorization();
+app.MapGrpcService<GrpcReviewsService>();
 app.MapControllers();
 
 

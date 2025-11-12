@@ -1,3 +1,4 @@
+using HotelReservation.Api.Grpc;
 using HotelReservation.Bll.Profiles;
 using HotelReservation.Bll.Services;
 using HotelReservation.Dal.Interfaces;
@@ -6,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
-
+builder.Services.AddGrpc();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -35,6 +36,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+app.MapGrpcService<GrpcReservationsService>();
 app.MapControllers();
 
 app.Run();

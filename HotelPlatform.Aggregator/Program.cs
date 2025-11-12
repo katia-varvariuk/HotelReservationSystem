@@ -1,10 +1,14 @@
 using HotelPlatform.Aggregator.Clients;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
-
+builder.AddRedisClient("redis");
 builder.Services.AddControllers();
+
+//builder.Services.AddGrpcClient<ReviewsService.ReviewsServiceClient>("reviews-service", o =>
+//{
+//    o.Address = new Uri("http://reviews-service");
+//});
 
 builder.Services.AddHttpClient<IReviewsClient, ReviewsClient>(client =>
 {
